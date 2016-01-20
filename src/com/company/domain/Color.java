@@ -3,6 +3,7 @@ package com.company.domain;
 /**
  * Created by Jakub Janoušek on 16. 12. 2015.
  */
+
 public enum Color {
 
     RED("cervena", 'R'),
@@ -20,10 +21,19 @@ public enum Color {
         this.symbol = symbol;
     }
 
+    /**
+     *
+     * @return Returns name of color in String
+     */
     public String toString(){
         return this.name;
     }
 
+    /**
+     *
+     * @param c
+     * @return Converts parameter from char to Color
+     */
     public static Color parse(char c) {
         for (Color color : Color.values()){
             if (color.symbol == c) {
@@ -31,6 +41,20 @@ public enum Color {
             }
         }
         throw new IllegalArgumentException("Non existing color for this char");
+    }
+
+    /**
+     *
+     * @param c
+     * @return You can ask if your char is in enum of colors
+     */
+    public static boolean match(char c) {
+        for (Color color : Color.values()) {
+            if (color.symbol == c) {
+                return true;
+            }
+        }
+        return false;
     }
 
 }

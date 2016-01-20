@@ -12,8 +12,14 @@ public class Game {
     private int NUM_OF_ATTEMPS;
     private Treasure myTreasure;
     private int NUM_OF_PIECES;
+    private AttemptHistory attHist = new AttemptHistory();
 
-    public int getAttempt() {
+
+    public AttemptHistory getAttHist() {
+		return attHist;
+	}
+
+	public int getAttempt() {
         return attempt;
     }
 
@@ -35,7 +41,7 @@ public class Game {
 
     public Game(Treasure myTreasure) {
         this.myTreasure = myTreasure;
-        this.NUM_OF_ATTEMPS = 10;
+        this.NUM_OF_ATTEMPS = 5;
         this.NUM_OF_PIECES = myTreasure.getColorList().size();
     }
 
@@ -43,10 +49,15 @@ public class Game {
         return NUM_OF_ATTEMPS;
     }
 
-
+    /**
+     *
+     * @param guess
+     * @return Returns Result object
+     */
     public Result addGuess(Guess guess) {
         int  matchColors = 0;
         int matchPositions = 0;
+        this.attempt++;
         List<Color> inputArr = guess.getInput_list();
 
         for (int i = 0; i < inputArr.size(); i++) {

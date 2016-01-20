@@ -1,5 +1,6 @@
 package com.company.domain;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -14,5 +15,21 @@ public class Treasure {
 
     public List<Color> getColorList() {
         return colorList;
+    }
+
+    /**
+     *
+     * @return Create initial list of colors
+     */
+    public static List<Color> createList (){
+        java.util.List<Color> colorList = new ArrayList<Color>();
+
+        colorList.add(Color.ORANGE);
+        colorList.add(Color.RED);
+        colorList.add(Color.GREEN);
+        colorList.add(Color.ORANGE);
+
+        return colorList;
+
     }
 }
